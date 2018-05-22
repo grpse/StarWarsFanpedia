@@ -1,0 +1,10 @@
+<h2>{{title}}</h2>
+
+<div>
+    Sort by: <a class="sort_by" (click)="sortByEpisode()">Episode</a>|<a class="sort_by" (click)="sortByReleaseDate()">Release Date</a>
+</div>
+
+<a *ngFor="let film of films" class="col-1-4"
+   routerLink="/films/{{film.episode_id}}">
+    <film-root [film]='film' ></film-root>
+</a>

@@ -1,0 +1,8 @@
+h2 {
+    color: gray;
+}
+
+.sort_by {
+    cursor: pointer;
+    color: blue;
+}
