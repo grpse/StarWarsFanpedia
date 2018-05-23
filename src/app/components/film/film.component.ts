@@ -10,7 +10,7 @@ import {Character} from '../../models/character';
 })
 export class FilmComponent {
 
-    @Input() film: Film; 
+    @Input() film: Film;
 
     constructor() {}
 

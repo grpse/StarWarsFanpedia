@@ -9,7 +9,7 @@ export class Character {
     eye_color: string;
     birth_year: string;
     gender: string;
-    films: [Film];
+    films: Film[];
 
     created: Date;
     edited: Date;

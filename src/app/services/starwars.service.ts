@@ -1,22 +1,28 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
+import {Film} from '../models/film';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
 
+export interface GetResponses {
+    getAll();
+}
+
 @Injectable({ providedIn: 'root' })
-export class StarwarsService {
+export abstract class StarwarsService implements GetResponses {
 
     private apiUrl = 'https://swapi.co/api/';
 
 
     constructor(private http: HttpClient) {}
 
-    public getAllFrom<Type>(modelName:string) : Observable<[Type]> {
-        return this.http.get<[Type]>(this.apiUrl+modelName);
-            // .pipe(tap(data => console.log(data)));
+    public getAllFrom<T>(modelName:string) : Observable<T> {
+        return this.http.get<T>(this.apiUrl+modelName);
     }
+    
+    public abstract getAll();
 }

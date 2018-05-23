@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FilmsService } from '../../services/films.service';
+import { FilmsService, FilmsResponse } from '../../services/films.service';
 import { Film } from '../../models/film';
 
 @Component({
@@ -9,24 +9,26 @@ import { Film } from '../../models/film';
 })
 export class FilmsComponent implements OnInit {
     title = 'Star Wars Films';
-    films: [Film];
+    films: Film[];
     sortBy: string;
+    
+    constructor(private filmsService: FilmsService) {
+    }
 
-    constructor(private filmsService: FilmsService) {}
-
-    ngOnInit() {
+    ngOnInit() : void {
         this.getFilms();
     }
 
-    getFilms() {
-        this.filmsService.getAll().subscribe(films => this.films = (<[Film]>films.results));
+    getFilms() : void {
+        console.log(this);
+        this.filmsService.getAll().subscribe( (films:FilmsResponse) => this.films = films.results);
     }
 
-    sortByEpisode() {
+    sortByEpisode() : void {
         this.films.sort((fa, fb) => fa.episode_id - fb.episode_id);
     }
 
-    sortByReleaseDate() {
+    sortByReleaseDate() : void {
         this.films.sort((fa, fb) => {
             let faUnixtime = (new Date(fa.release_date)).getTime();
             let fbUnixtime = (new Date(fb.release_date)).getTime();

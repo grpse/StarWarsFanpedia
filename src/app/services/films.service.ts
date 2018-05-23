@@ -3,10 +3,17 @@ import { StarwarsService } from './starwars.service';
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 
-@Injectable({ providedIn: 'root' })
-export class FilmsService extends StarwarsService {
+export interface FilmsResponse {
+    results : Film[];
+}
 
-    public getAll() : Observable<[Film]> {
-        return this.getAllFrom<Film>('films');
+@Injectable({ providedIn: 'root' })
+export class FilmsService {
+
+    constructor(private starwarsService: StarwarsService) {}
+
+    public getAll() : Observable<FilmsResponse> {
+        return this.starwarsService.getAllFrom<FilmsResponse>('films');
     }
+    
 }
