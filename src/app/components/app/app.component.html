@@ -1,1 +1,11 @@
-<films-root> </films-root>
+
+<!--[if lte IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif]-->
+
+<div class="app-container">
+    <form action="/search" class="search w-form">
+        <input type="search" class="search-input w-input" maxlength="256" name="query" placeholder="Unleash the knowledge.."
+            id="search" (input)="filterByName($event.target.value)">
+        <input type="submit" value="Search" class="search-button w-button">
+    </form>
+    <films-root [films]='filtered_films' class="films-container"> </films-root>
+</div>

@@ -23,6 +23,10 @@ export abstract class StarwarsService implements GetResponses {
     public getAllFrom<T>(modelName:string) : Observable<T> {
         return this.http.get<T>(this.apiUrl+modelName);
     }
+
+    public getByUrl<T>(url:string) : Observable<T> {
+        return this.http.get<T>(url);
+    }
     
     public abstract getAll();
 }

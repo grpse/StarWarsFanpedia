@@ -9,8 +9,8 @@ export class Character {
     eye_color: string;
     birth_year: string;
     gender: string;
-    films: Film[];
-
+    films: string[];
+    photo: string;
     created: Date;
     edited: Date;
     url: string;

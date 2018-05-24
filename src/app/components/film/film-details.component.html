@@ -1,0 +1,19 @@
+<h1>{{film ? film.title : ''}}</h1>
+<blockquote>{{film ? film.opening_crawl : ''}}</blockquote>
+<h4>Director</h4>
+<p>{{film ? film.director : ''}}</p>
+<h4>Producer</h4>
+<p>{{film ? film.producer : ''}}</p>
+<h3>Characters</h3>
+<!--p *ngFor="let character of characters">
+    {{character.name}}
+</p-->
+
+<div class="film-characters w-row">
+    <div *ngFor="let character of film.characters_data" 
+            class="column character-block w-col w-col-2">
+            <p class="character-name">{{character.name}}</p>
+            <img *ngIf="character.photo" src="{{character.photo}}"
+                class="character-image">
+    </div>
+</div>

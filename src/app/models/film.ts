@@ -7,5 +7,6 @@ export class Film {
     director: string;
     producer: string;
     release_date: Date;
-    characters: Character[];
+    characters: string[];
+    characters_data: Character[];
 }

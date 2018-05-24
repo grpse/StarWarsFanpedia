@@ -1,0 +1,7 @@
+{
+    "defaults": {
+        "serve": {
+           "proxyConfig": "./proxy.config.js"
+        }
+    }
+}

@@ -1,10 +1,8 @@
-<h2>{{title}}</h2>
+<ul class="film-slider w-clearfix w-list-unstyled">
+    <film-root *ngFor="let film of films" class="film-cover w-clearfix" (click)="selectedFilm(film);" [film]="film"></film-root>
+</ul>
 
-<div>
-    Sort by: <a class="sort_by" (click)="sortByEpisode()">Episode</a>|<a class="sort_by" (click)="sortByReleaseDate()">Release Date</a>
+<div *ngIf="film_to_show !== null" class="film-data-show">
+    <film-details class="vertical-flex" [film]='film_to_show'></film-details>
+    <a (click)="closeFilmDetails();" class="close-button w-button">X</a>
 </div>
-
-<a *ngFor="let film of films" class="col-1-4"
-   routerLink="/films/{{film.episode_id}}">
-    <film-root [film]='film' ></film-root>
-</a>
