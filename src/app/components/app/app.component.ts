@@ -40,12 +40,21 @@ export class AppComponent implements OnInit {
     if (name.length) {
       this.filtered_films = this.films.filter((f:Film) => {
         let includesFilmName = f.title.toLowerCase().includes(name.toLowerCase());
-
-        return includesFilmName
+        let includesCharatersNames = this.checkIfCharacterNameIsPresentOnFilm(f, name);
+        return includesFilmName || includesCharatersNames; 
       });
     }
     else {
       this.filtered_films = this.films;
+    }
+  }
+
+  checkIfCharacterNameIsPresentOnFilm(film:Film, name:string) : boolean {
+    if (film.characters_data) {
+      return film.characters_data.filter(c => c.name.toLowerCase().includes(name.toLowerCase())).length > 0;
+    }
+    else {
+      return false;
     }
   }
 }
